@@ -1,0 +1,19 @@
+<h1>配送先登録 / ⼀覧</h1>
+<%= form_with model:@delivery, url: "public_deliveries_path", local:true do |f| %>
+  <p>郵便番号（ハイフンなし）</p>
+  <%= f.text_field :postcode %>
+  <p>住所</p>
+  <%= f.text_field :address %>
+  <p>宛名</p>
+  <%= f.text_field :name %>
+  <%= f.submit '新規登録' %>
+<% end %>
+
+<table>
+  <tr>
+    <th>郵便番号</th>
+    <th>住所</th>
+    <th>宛名</th>
+    <th></th>
+  </tr>
+</table>
