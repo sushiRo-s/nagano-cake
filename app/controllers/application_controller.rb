@@ -1,29 +1,22 @@
 class ApplicationController < ActionController::Base
   before_action:authenticate_admin!,except: [:top, :about]
-
-    before_action :configure_permitted_parameters, if: :devise_controller?
-
-    def after_sign_in_path_for(resource)
-      admin_path(resource)
-    end
-
-    def after_log_in_path_for(resource)
-      admin_path(resource)
-    end
-
-
   before_action:authenticate_member!,except: [:top, :about]
 
     before_action :configure_permitted_parameters, if: :devise_controller?
 
     def after_sign_in_path_for(resource)
-      public_member_path(resource)
+      if resource.is_a?(Admin)
+      root_path(resource)
+      else resource.is_a?(Member)
+      root_path(resource)
+      end
     end
 
-    def after_log_in_path_for(resource)
-      public_member_path(resource)
+    def after_sign_up_path_for(resource)
+      if resource.is_a?(Member)
+      root_path(resource)
+      end
     end
-
 
 
   protected
