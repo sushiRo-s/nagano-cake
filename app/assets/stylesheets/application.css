@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+#top-visual {
+ width: 800px;
+ height: 600px;
+ background-image: url(img_sweets11.jpg);
+ background-size: cover;
+ background-position: center;
+}
+
+.top-visual-container {
+  width: 800px;
+  height: 600px;
+  background-color: rgba( 255, 255, 255, 0.5);
+}
+
+.new-boxes {
+ width: 100%;
+ display: flex;
+}
+
+.new-box {
+ width: 60%;
+}
+
+.new-box-image {
+ width: 200px;
+ height: 160px;
+}
+
+ #about-image {
+  width: 800px;
+  height: 600px;
+  background-image: url(img_sweets04.jpg);
+  background-size: cover;
+  background-position: center;
+
+ }
+
