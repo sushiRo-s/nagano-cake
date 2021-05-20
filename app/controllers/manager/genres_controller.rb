@@ -1,8 +1,8 @@
 class Manager::GenresController < ApplicationController
-
+ before_action:authenticate_admin!
      def index
       @genres= Genre.all
-      @newgenre = Genre.new
+      @genre = Genre.new
      end
 
      def edit
@@ -12,12 +12,11 @@ class Manager::GenresController < ApplicationController
      def update
       genre = Genre.find(params[:id])
       genre.update(genre_params)
-      redirect_to manager_genres_path
+      redirect_to manager_genres_path(genre)
      end
 
      def create
-      @genre = Genre.all
-      genre = Genre.new(@genre_params)
+      genre = Genre.new(genre_params)
       genre.save
       redirect_to manager_genres_path
      end
