@@ -10,11 +10,11 @@ Rails.application.routes.draw do
   registrations: 'admins/registrations'
 }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+
   root to: 'homes#top'
   get 'home/about' => 'homes#about'
-  
-  
+
+
   namespace :manager do
     resources :members, only: [:index, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update]
@@ -23,12 +23,14 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
   end
 
-  
-  
+
+
   namespace :public do
-    resources :members, only: [:show, :edit, :update]
-    get 'public/members/unsubscribe' => 'public/members#unsubscribe', as: 'unsubscribe'
-    patch 'public/members' => 'public/members#withdrawal', as: 'withdrawal'
+    get 'members' => 'members#show', as: 'member'
+    get 'members/edit' => 'members#edit', as: 'edit_member'
+    patch 'members' => 'members#update', as: 'update_member'
+    get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
+    patch 'members/unsubscribe' => 'members#withdrawal', as: 'withdrawal'
     resources :deliveries, only: [:index, :create, :destroy, :edit, :update]
     resources :carts, only: [:index, :create, :update, :destroy]
     delete 'public/carts/destroy_all' => 'public/carts#destroy_all', as: 'destroy_all'
@@ -38,6 +40,6 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
   end
 
-  
-  
+
+
 end

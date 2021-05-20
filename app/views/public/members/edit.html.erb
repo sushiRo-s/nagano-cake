@@ -1,6 +1,6 @@
 <h2>会員情報編集</h2>
 
-<%= form_with model:@member, url:"/public/members/#{@member.id}", local:true do |f| %>
+<%= form_with model:@member, url:"/public/members", local:true do |f| %>
   <label for="inputName">Name</label>
   <div class="field">
     <%= f.label :名前 %><br />
@@ -39,3 +39,5 @@
   </div>
   <%= f.submit "編集内容を保存", class: 'btn btn-secondary' %>
 <% end %>
+
+<%= link_to "退会する", public_unsubscribe_path %>
