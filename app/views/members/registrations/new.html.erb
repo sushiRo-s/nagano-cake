@@ -4,26 +4,56 @@
   <%= render "members/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :名前 %><br />
+    <%= f.label :last_name, "姓" %>
+    <%= f.text_field :last_name, autofocus: true, required: true, class: 'form-control' %>
+    <%= f.label :first_name, "名" %>
+    <%= f.text_field :first_name, autofocus: true, required: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :フリガナ %><br />
+    <%= f.label :last_name_kana, "セイ" %>
+    <%= f.text_field :last_name_kana, autofocus: true, required: true, class: 'form-control' %>
+    <%= f.label :first_name_kana, "メイ" %>
+    <%= f.text_field :first_name_kana, autofocus: true, required: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :郵便番号（ハイフンなし） %><br />
+    <%= f.text_field :postcode, autofocus: true, required: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :住所 %><br />
+    <%= f.text_field :address, autofocus: true, required: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :電話番号（ハイフンなし） %><br />
+    <%= f.text_field :phone_number, autofocus: true, required: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード（６文字以上） %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :パスワード（確認用） %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
-
+<h2>既に登録済みの方</h2>
 <%= render "members/shared/links" %>
