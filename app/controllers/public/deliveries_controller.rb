@@ -1,5 +1,5 @@
 class Public::DeliveriesController < ApplicationController
-
+ before_action:authenticate_member!
 
   def index
     @delivery = Delivery.new
