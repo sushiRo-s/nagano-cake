@@ -2,6 +2,8 @@ class Manager::ProductsController < ApplicationController
   before_action:authenticate_admin!
   
   def index
+    @products = Product.all
+    @genres= Genre.all
   end
   
   def show
@@ -9,6 +11,7 @@ class Manager::ProductsController < ApplicationController
   
   def new
    @product = Product.new
+   @genres= Genre.all
   end
   
   def create

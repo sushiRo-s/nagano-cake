@@ -9,7 +9,16 @@
   <h6>商品説明</h6>
   <%= f.text_area :title %>
   
-  <%= f.submit '新規登録', class: 'btn btn-success' %>
+  <h6>ジャンル</h6>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択して下さい--" %>
+  <h6>税抜き価格</h6>
+  <%= f.text_field :price %>
+  円
+  <h6>販売ステータス</h6>
+  <label><%= f.radio_button :is_active, true %> 販売中</label>
+　<label><%= f.radio_button :is_active, false %> 販売停止中 </label>
+  <br>
+  <%= f.submit '新規登録', class: 'btn btn-success' %></br>
   <% end %>
   
   </div>

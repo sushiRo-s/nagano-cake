@@ -1,1 +1,21 @@
 <h2>商品一覧</h2>
+
+
+　<table class="table table-hover table-inverse">
+ <thead>
+  <th>商品id </th>
+  <th>商品名 </th>
+  <th>税抜き価格 </th>
+  <th>ジャンル名 </th>
+  <th> 販売ステータス</th>
+  <th colspan="5"></th>
+
+ <% @products.each do |product| %>
+ <th><%= product.id %></th>
+  <th><%= product.name %></th>
+  <th><%= product.price %></th>
+  <th><%= @genre.name %></th>
+  <th><%= product.is_active %></th>
+ <% end %>
+  <thead>
+ </table>
