@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  #before_action:authenticate_admin!,except: [:top, :about]
-  #before_action:authenticate_member!,except: [:top, :about]
 
     before_action :configure_permitted_parameters, if: :devise_controller?
 

@@ -1,8 +1,8 @@
 class Manager::GenresController < ApplicationController
-
+ before_action:authenticate_admin!
      def index
       @genres= Genre.all
-      @newgenre = Genre.new
+      @genre = Genre.new
      end
 
      def edit
@@ -16,8 +16,8 @@ class Manager::GenresController < ApplicationController
      end
 
      def create
-      @genre = Genre.all
-      genre = Genre.new(@genre_params)
+      #@genres = Genre.all
+      genre = Genre.new(genre_params)
       genre.save
       redirect_to manager_genres_path
      end
