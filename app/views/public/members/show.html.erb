@@ -1,6 +1,7 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3'>
+      <%= link_to '編集する',edit_public_member_path(current_member.id),class: 'btn btn-secondary' %>
       <h2>マイページ</h2>
       <h5>姓</h5>
       <%= @member.last_name %>
@@ -15,9 +16,13 @@
       <h5>住所</h5>
       <%= @member.address %>
       <h5>電話番号</h5>
-      <%= @member.postcode %>
+      <%= @member.phone_number %>
       <h5>メールアドレス</h5>
       <%= @member.email %>
+      <h3>配送先</h3>
+      <%= link_to '一覧を見る',public_deliveries_path,class: 'btn btn-secondary' %>
+      <h3>注文履歴</h3>
+      <%= link_to '一覧を見る',public_orders_path,class: 'btn btn-secondary' %>
     </div>
   </div>
 </div>
