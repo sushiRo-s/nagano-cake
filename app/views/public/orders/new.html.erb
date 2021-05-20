@@ -1,1 +1,29 @@
 <h1>注文情報入力</h1>
+
+<%= form_with model:@order, url: "/public/orders", local:true do |f| %>
+    <div>
+      <p>
+        <%= f.label :payment_method, "支払い方法" %>
+      </p>
+      <p>
+        <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
+        <%= f.label :クレジットカード %>
+      </p>
+    </div>
+    <p>
+      <%= f.radio_button :payment_method, :銀行振り込み %>
+      <%= f.label :銀行振り込み %>
+    </p>
+
+    <p>
+      <%= f.label :payment_method, "支払い方法" %>
+    </p>
+
+
+  <h3>お届け先</h3>
+    <p>
+
+    </p>
+<% end %>
+
+
