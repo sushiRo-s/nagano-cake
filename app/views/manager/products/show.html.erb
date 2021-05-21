@@ -6,12 +6,12 @@
  <p>商品名：<%= @product.name %></p>
  
  <p>商品説明：<%= @product.title %></p>
- <p>ジャンル名：<%= @genre.name %></p>
+ <p>ジャンル名：<%= @product.genre.name %></p>
  <p>税込み価格：<%= (@product.price*1.1).floor %>円</p>
  <p>(税抜き価格)：(<%= @product.price %>)円</p>
-  <p><% if @product.is_active = true %>販売中
-    <% else %>販売停止中
-   <% end %>
-  
+ <p>販売ステータス: <% if @product.is_active == true %>販売中
+                    <% elsif @product.is_active == false %>販売停止中
+                    <% else %>
+                    <% end %>
   <br><%= link_to ' 編集する', edit_manager_product_path(@product.id) , class: 'btn btn-success'%></br>
   

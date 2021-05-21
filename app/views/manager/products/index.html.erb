@@ -20,10 +20,11 @@
   <th><%= link_to product.name, manager_product_path(product) %></th>
   <th><%= product.price %></th>
   <th><%= product.genre.name %></th>
-  <th><%# if product.is_active = true %>
-    <%#else %> 
-    <%= product.is_active %></th>
-   <%# end %>
+  <th><% if product.is_active == true %> 販売中
+      <% elsif product.is_active == false %> 販売停止中
+      <% else %>
+  </th>
+   <% end %>
    
  <% end %>
  </tr>
