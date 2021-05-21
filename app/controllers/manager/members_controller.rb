@@ -9,8 +9,13 @@ class Manager::MembersController < ApplicationController
   end
   
   def edit
+      @members = Member.find(params[:id])
   end
   
   def update
+    member = Member.find(params[:id])
+    member.save
+    @members = Member.find(params[:id])
+    render 'show'
   end
 end
