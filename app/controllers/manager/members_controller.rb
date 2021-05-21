@@ -5,17 +5,22 @@ class Manager::MembersController < ApplicationController
   end
   
   def show
-    @members = Member.find(params[:id])
+    @member = Member.find(params[:id])
   end
   
   def edit
-      @members = Member.find(params[:id])
+    @member = Member.find(params[:id])
   end
   
   def update
     member = Member.find(params[:id])
-    member.save
-    @members = Member.find(params[:id])
-    render 'show'
+    member.update(member_params)
+    redirect_to manager_member_path(member.id)
   end
+  
+  private
+  def member_params
+    params.require(:member).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number, :email, :is_deleted)
+  end
+  
 end
