@@ -20,9 +20,6 @@ class Manager::ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     product.save
-    #@products = Product.all
-    #@genres= Genre.all
-    #render 'index'
     redirect_to  manager_product_path(product.id)
   end
   
@@ -34,9 +31,6 @@ class Manager::ProductsController < ApplicationController
   def update
     product = Product.find(params[:id])
     product.update(product_params)
-    #@products = Product.find(params[:id])
-    #@genre = Genre.find(params[:id])
-    #render 'show'
     redirect_to manager_product_path(product.id)
   end
   
