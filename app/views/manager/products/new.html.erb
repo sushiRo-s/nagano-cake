@@ -1,7 +1,7 @@
 <h2>商品新規登録</h2>
 
   <div>
-  <%= form_with model:@product,url: manager_products_path, local:true do |f| %>
+  <%= form_with model: @newproduct, url: manager_products_path, local:true do |f| %>
   <h6>商品画像</h6>
   <%= f.attachment_field :image %>
   <h6>商品名</h6>

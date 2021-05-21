@@ -9,7 +9,7 @@
   <th>商品名 </th>
   <th>税抜き価格 </th>
   <th>ジャンル名 </th>
-  <th> 販売ステータス</th>
+  <th>販売ステータス</th>
   <th colspan="5"></th>
 
  <% @products.each do |product| %>
@@ -17,7 +17,9 @@
   <th><%= product.name %></th>
   <th><%= product.price %></th>
   <th><%= @genre.name %></th>
-  <th><%= product.is_active %></th>
+  <th><li><% if product.is_active = true %>販売中
+  　　<% else %> 販売停止中</li>
+  　<% end %>　</th>
  <% end %>
   <thead>
  </table>
