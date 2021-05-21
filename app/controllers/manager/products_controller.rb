@@ -7,7 +7,7 @@ class Manager::ProductsController < ApplicationController
   end
   
   def show
-    @products = Product.find(params[:id])
+    @product = Product.find(params[:id])
     @genre = Genre.find(params[:id])
   end
   
@@ -20,9 +20,10 @@ class Manager::ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     product.save
-    @products = Product.all
-    @genres= Genre.all
-    render 'index'
+    #@products = Product.all
+    #@genres= Genre.all
+    #render 'index'
+    redirect_to  manager_product_path(product.id)
   end
   
   def edit
@@ -32,16 +33,17 @@ class Manager::ProductsController < ApplicationController
   
   def update
     product = Product.find(params[:id])
-    product.save
-    @products = Product.find(params[:id])
-    @genre = Genre.find(params[:id])
-    render 'show'
+    product.update(product_params)
+    #@products = Product.find(params[:id])
+    #@genre = Genre.find(params[:id])
+    #render 'show'
+    redirect_to manager_product_path(product.id)
   end
   
   private
 
   def product_params
-    params.require(:product).permit(:name, :image, :title, :price)
+    params.require(:product).permit(:name, :image, :title, :price, :genre_id)
   end
   
 end

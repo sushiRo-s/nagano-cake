@@ -1,17 +1,14 @@
 <h2>商品詳細</h2>
 
- <h6>商品画像</h6>
+ <p>商品画像</p>
  <%= @product.image_id %>
- <h6>商品名</h6>
-  <%= @product.name %>
-   <h6>商品説明</h6>
-   <%= @product.title %>
-   <h6>ジャンル名</h6>
-  <%= @genre.name %>
-  <h6>税込み価格
-      <br>(税抜き価格)</br></h6>
-  <%= @product.price %>5
-      <br><%= @product.price %></br>
+ 
+ <p>商品名：<%= @product.name %></p>
+ 
+ <p>商品説明：<%= @product.title %></p>
+ <p>ジャンル名：<%= @genre.name %></p>
+ <p>税込み価格：<%= (@product.price*1.1).floor %>円</p>
+ <p>(税抜き価格)：(<%= @product.price %>)円</p>
   <li><% if @product.is_active = true %>販売中
   　　<% else %>販売停止中</li>
   　<% end %>　
