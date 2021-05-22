@@ -1,55 +1,12 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-3'>
-<<<<<<< HEAD
-      <%= link_to '編集する',edit_public_member_path(current_member.id),class: 'btn btn-secondary' %>
-        <h2>マイページ</h2>
-          <di class="col-md-3">
-            <tr>
-              <td>
-                <h5>姓</h5>
-                <%= @member.last_name %>
-                <h5>名</h5>
-                <%= @member.first_name %>
-              </td>
-              <td>
-                <h5>セイ</h5>
-                <%= @member.last_name_kana %>
-                <h5>メイ</h5>
-                <%= @member.first_name_kana %>
-              </td>
-              <td>
-                <h5>郵便番号</h5>
-                <%= @member.postcode %>
-              </td>
-              <td>
-                <h5>住所</h5>
-                <%= @member.address %>
-              </td>
-              <td>
-                <h5>電話番号</h5>
-                <%= @member.phone_number %>
-              </td>
-              <td>
-                <h5>メールアドレス</h5>
-                <%= @member.email %>
-              </td>
-            </tr>
-          <h3>配送先</h3>
-          <%= link_to '一覧を見る',public_deliveries_path,class: 'btn btn-secondary' %>
-          <h3>注文履歴</h3>
-          <%= link_to '一覧を見る',public_orders_path,class: 'btn btn-secondary' %>
-=======
       <%= link_to '編集する',public_edit_member_path(current_member),class: 'btn btn-secondary' %>
       <h2>マイページ</h2>
-      <h5>姓</h5>
-      <%= @member.last_name %>
-      <h5>名</h5>
-      <%= @member.first_name %>
-      <h5>セイ</h5>
-      <%= @member.last_name_kana %>
-      <h5>メイ</h5>
-      <%= @member.first_name_kana %>
+      <h5>氏名</h5>
+      <%= @member.last_name %><%= @member.first_name %>
+      <h5>カナ</h5>
+      <%= @member.last_name_kana %><%= @member.first_name_kana %>
       <h5>郵便番号</h5>
       <%= @member.postcode %>
       <h5>住所</h5>
@@ -62,7 +19,6 @@
       <%= link_to '一覧を見る',public_deliveries_path,class: 'btn btn-secondary' %>
       <h3>注文履歴</h3>
       <%= link_to '一覧を見る',public_orders_path,class: 'btn btn-secondary' %>
->>>>>>> e4f5fed9d054ae000e1215b5a54756f5a4355041
     </div>
   </div>
 </div>
