@@ -3,6 +3,8 @@ class Public::OrdersController < ApplicationController
 
   def new
    @order = Order.new
+   @member = current_member
+   @deliveries = Delivery.all
   end
 
   def confirm
@@ -16,5 +18,12 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
+  
+  private
+
+  def order_params
+    params.require(:order).permit(:payment_method, :status, :delivery_name, :delivery_address, :delivery_id, :delivery_postcode, :member_id)
+  end
+  
 
 end
