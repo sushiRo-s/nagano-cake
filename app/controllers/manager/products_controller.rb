@@ -23,7 +23,6 @@ class Manager::ProductsController < ApplicationController
   
   def edit
     @product = Product.find(params[:id])
-    @genre = Genre.find(params[:id])
   end
   
   def update

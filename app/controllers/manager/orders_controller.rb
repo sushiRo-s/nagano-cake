@@ -3,7 +3,6 @@ class Manager::OrdersController < ApplicationController
   
    def index
     @orders = Order.page(params[:page]).reverse_order
-    @members= Member.all
    end
   
   def show
