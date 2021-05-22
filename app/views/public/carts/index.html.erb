@@ -1,1 +1,21 @@
-<h1>ショッピングカート</h1>
+<div class='container'>
+  <div class ='header-cart'>
+    <h1 class='text-center mb-50'>ショッピングカート</h1>
+  </div>
+  <ul class='list-group'>
+
+    <li class='list-group-product d-flex justify-content-between border p-3'>
+
+
+    </li>
+  </ul>
+  <li class="list-none">
+    <% @carts.each do |cart| %>
+    <%#= attachment_image_tag cart.product, :image %>
+    <%= cart.product.title %>
+    <%= (cart.product.price * 1.1).floor %>
+    <% end %>
+
+
+　</li>
+</div>
