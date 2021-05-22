@@ -33,10 +33,10 @@ Rails.application.routes.draw do
     patch 'members/unsubscribe' => 'members#withdrawal', as: 'withdrawal'
     resources :deliveries, only: [:index, :create, :destroy, :edit, :update]
     resources :carts, only: [:index, :create, :update, :destroy]
-    delete 'public/carts/destroy_all' => 'public/carts#destroy_all', as: 'destroy_all'
+    delete 'carts/destroy_all' => 'carts#destroy_all', as: 'destroy_all'
     resources :orders, only: [:new, :create, :index, :show]
-    post 'public/orders/confirm' => 'public/orders#confirm', as: 'confirm'
-    get 'public/orders/complete' => 'public/orders#complete', as: 'complete'
+    post 'orders/confirm' => 'orders#confirm', as: 'confirm'
+    get 'orders/complete' => 'orders#complete', as: 'complete'
     resources :products, only: [:index, :show]
   end
 
