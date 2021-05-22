@@ -8,13 +8,11 @@ class Manager::ProductsController < ApplicationController
   
   def show
     @product = Product.find(params[:id])
-    @genre = Genre.find(params[:id])
   end
   
   def new
    @newproduct = Product.new
    @genres= Genre.all
-   
   end
   
   def create
