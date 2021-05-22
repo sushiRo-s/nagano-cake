@@ -2,7 +2,7 @@ class Manager::ProductsController < ApplicationController
   before_action:authenticate_admin!
   
   def index
-    @products = Product.all
+    @products = Product.page(params[:page]).reverse_order
     @genres= Genre.all
   end
   
