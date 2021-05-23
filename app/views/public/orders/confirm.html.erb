@@ -1,1 +1,36 @@
 <h1>注⽂情報確認</h1>
+
+<table class="table table-hover table-inverse">
+ <thead>
+  <th>商品名</th>
+  <th>単価(税込)</th>
+  <th>数量</th>
+  <th>小計</th>
+  <th colspan="4"></th>
+  <tr>
+  <% @carts.each do |cart| %>
+<th><%= cart.product.name %></th>
+<th><%= (cart.product.price * 1.1).floor %></th>
+<th><%= cart.quantity %></th>
+<th><%= (cart.product.price * 1.1).floor * cart.quantity %></th>
+</tr>
+　<% end %>
+ </thead>
+   <tbody>
+    <th>送料 <%= @order.send_price %></th>
+    <th>商品合計 <%= @sum %></th>
+    <th>請求金額 <%= @order.total_price %></th>
+     </tbody>
+ </table>
+
+<h6>支払方法</h6>
+<p>
+<% if @order.payment_method == "クレジットカード" %>クレジットカード
+<% elsif @order.payment_method == "銀行振り込み" %>銀行振り込み
+<% else %>間違い
+<% end %>
+</p>
+
+<h6>お届け先</h6>
+<p>〒<%= @order.delivery_postcode %><%= @order.delivery_address %></p>
+<%= @order.delivery_name %>

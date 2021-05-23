@@ -2,8 +2,7 @@ class Manager::OrdersController < ApplicationController
   before_action:authenticate_admin!
   
    def index
-    @orders = Order.all
-    @members= Member.all
+    @orders = Order.page(params[:page]).reverse_order
    end
   
   def show

@@ -12,7 +12,7 @@
  <tr>
  <th><%= link_to order.created_at, manager_order_path(order) %></th></th>
  <th><%= order.member.last_name %><%= order.member.first_name %></th>
- <th></th>
+ <th><%= order.order_product.quantity %></th>
  <th><% if order.status = 0 %>入金待ち
    　<% elsif order.status = 1 %>入金確認
    　<% elsif order.status = 2 %>製作中
@@ -24,3 +24,4 @@
  </tr></tr>
   <thead>
  </table>
+ <%= paginate @orders %>
