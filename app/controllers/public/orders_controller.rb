@@ -4,7 +4,7 @@ class Public::OrdersController < ApplicationController
   def new
    @order = Order.new
    @member = current_member
-   @deliveries = Delivery.all
+   @deliveries = @member.deliveries
   end
 
   def confirm

@@ -3,7 +3,7 @@ class Public::DeliveriesController < ApplicationController
 
   def index
     @delivery = Delivery.new
-    @deliverys = Delivery.all
+    @deliverys = current_member.deliveries
   end
 
   def create
