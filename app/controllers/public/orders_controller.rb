@@ -8,21 +8,21 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-  @order = Order.new  
+  @order = Order.new(order_params)
   @carts = current_member.carts
   @member = current_member
-  @deliveries = @member.deliveries
    
-     if @order.delivery_address = "0"  
+     if params[:delivery_method] == "0"
         @order.delivery_postcode = @member.postcode  
         @order.delivery_address =  @member.address  
         @order.delivery_name =    (@member.last_name + @member.first_name)
-     elsif @order.delivery_address = "1"  
-           @order.delivery_postcode = @deliveries.postcode  
-           @order.delivery_address =  @deliveries.address 
-           @order.delivery_name =     @deliveries.name
-     elsif @order.delivery_address = "2"  
-           order.save
+        
+     elsif params[:delivery_method]  == "1"  
+           @delivery = Delivery.find(params[:order][:delivery_id])
+           @order.delivery_postcode = @delivery.postcode  
+           @order.delivery_address =  @delivery.address 
+           @order.delivery_name =     @delivery.name
+     elsif params[:delivery_method]  == "2"  
      else
            redirect_to new_public_order_path
      end
@@ -44,7 +44,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :status, :delivery_name, :delivery_address, :delivery_id, :delivery_postcode, :member_id, :member_address)
+    params.require(:order).permit(:payment_method, :status, :delivery_name, :delivery_address, :delivery_postcode, :member_id, :member_address)
   end
   
 

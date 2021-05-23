@@ -18,7 +18,7 @@
     <tr>
       <td>
         <%= attachment_image_tag cart.product, :image, :fill, 50, 50 %>
-        <%= cart.product.title %>
+        <%= cart.product.name %>
       </td>
       <td>
         <%= (cart.product.price * 1.1).floor %>
