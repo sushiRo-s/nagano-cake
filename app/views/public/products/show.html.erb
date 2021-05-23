@@ -10,6 +10,6 @@
 
 <%= form_with model:@cart, url:public_carts_path, local: true, method: :post do |f| %>
   <%= f.hidden_field :product_id, value: @product.id %>
-  <%= f.select :quantity, [ 1,2,3 ], {include_blank: '個数選択'} %>
+  <%= f.select :quantity, [ 1,2,3,4,5,6,7,8,9,10 ], {include_blank: '個数選択'} %>
   <%= f.submit "カートに入れる", class: "btn btn-success" %>
 <% end %>

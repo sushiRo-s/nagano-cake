@@ -32,13 +32,13 @@ Rails.application.routes.draw do
     get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
     patch 'members/unsubscribe' => 'members#withdrawal', as: 'withdrawal'
     resources :deliveries, only: [:index, :create, :destroy, :edit, :update]
-    resources :carts, only: [:index, :create, :update, :destroy]
     delete 'carts/destroy_all' => 'carts#destroy_all', as: 'destroy_all'
+    resources :carts, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
     post 'orders/confirm' => 'orders#confirm', as: 'confirm'
     get 'orders/complete' => 'orders#complete', as: 'complete'
     resources :products, only: [:index, :show]
   end
 
-  
+
 end
