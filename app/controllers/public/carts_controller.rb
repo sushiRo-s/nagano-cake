@@ -3,6 +3,10 @@ class Public::CartsController < ApplicationController
 
   def index
    @carts = current_member.carts
+   @sum  = 0
+   @carts.each do |cart|
+    @sum += (cart.product.price * 1.1).floor * cart.quantity
+   end
   end
 
   def create
@@ -18,19 +22,21 @@ class Public::CartsController < ApplicationController
   end
 
   def update
-   # @carts = Cart.find(params[:id])
-   # @cart.update(cart_params)
-   @cart.update(quantity: params[:quantity].to_i)
-   redirect_to "index"
+   @cart = Cart.find(params[:id])
+   @cart.update(cart_params)
+   redirect_to public_carts_path
   end
 
   def destroy
-   product = Product.find(params[:id])
-   product.destroy
-   redirect_to "index"
+   cart = Cart.find(params[:id])
+   cart.destroy
+   redirect_to '/public/carts'
   end
 
   def destroy_all
+   carts = Cart.all
+   carts.destroy_all
+   redirect_to '/public/carts'
   end
 
   private
