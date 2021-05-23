@@ -1,57 +1,54 @@
 <div class='container'>
   <h1>ショッピングカート</h1>
 
-
-<table>
-
-  <tr>
-    <th>商品名</th>
-    <th>単価（税込）</th>
-    <th>数量</th>
-    <th>小計</th>
-    <th></th>
-  </tr>
-
-  <% @carts.each do |cart| %>
-  <tr>
-    <td>
-      <%= attachment_image_tag cart.product, :image, :fill, 50, 50 %>
-      <%= cart.product.title %>
-    </td>
-    <td>
-      <%= (cart.product.price * 1.1).floor %>
-    </td>
-    <td>
-      <%= cart.quantity %>
-      <%#= form_with  url: public_carts_path, local: true, do |f| %>
-        <%#= f.select :quantity  %>
-        <%#= f.submit "数量の変更を確定" %>
-      <%# end %>
-    </td>
-    <td>
-      <!--小計-->
-    </td>
-    <td>
-      <%#= button_to "削除", public_cart_path(product_id: cart.product.id), method: :delete, data: { confirm: "商品を削除しますか？" } %>
-    </td>
-
-  </tr>
-   <% end %>
-
-</table>
+  <%= button_to "カートを空にする", public_destroy_all_path, method: :delete, data: { confirm: "商品を削除しますか？" }, class: 'btn btn-danger'  %>
 
 
+  <table>
+
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+
+    <% @carts.each do |cart| %>
+    <tr>
+      <td>
+        <%= attachment_image_tag cart.product, :image, :fill, 50, 50 %>
+        <%= cart.product.title %>
+      </td>
+      <td>
+        <%= (cart.product.price * 1.1).floor %>
+      </td>
+      <td>
+        <%#= cart.quantity %>
+        <%= form_with model:[:public,cart], local: true do |f| %>
+          <%= f.hidden_field :product_id, value: cart.product.id %>
+          <%= f.select :quantity, [ 1,2,3,4,5,6,7,8,9,10 ] %>
+          <%= f.submit "変更", class: "btn btn-success" %>
+        <% end %>
 
 
-    <%#= form_with(url: "public/carts", method: :post,local: true) do |f| %>
-    <%#= f.hidden_field :product_id, value: cart.product.id %>
-    <%#= f.number_field :quantity ,value: cart.quantity%>
-    <%#= f.submit "情報入力に進む", class: 'btn btn-primary' %>
-    <%# end %>
-    <%#= button_to "削除", delete_item_path(product_id: cart_item.product.id), method: :delete, data: { confirm: "商品を削除しますか？" } %>
+      </td>
+      <td>
+        <%= (cart.product.price * 1.1).floor * cart.quantity %>
+      </td>
+      <td>
+        <%= button_to "削除", public_cart_path(cart), method: :delete, data: { confirm: "商品を削除しますか？" }, class: 'btn btn-danger' %>
+      </td>
+    </tr>
+     <% end %>
 
+  </table>
 
+  <%= link_to "買い物を続ける", root_path, class: 'btn btn-primary' %>
 
+  <div>合計金額</div>
+  <%= @sum %>
 
+  <%= link_to "情報入力に進む", new_public_order_path, class: "btn btn-success" %>
 
 </div>
