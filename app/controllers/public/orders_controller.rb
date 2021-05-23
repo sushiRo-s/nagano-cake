@@ -9,8 +9,14 @@ class Public::OrdersController < ApplicationController
 
   def confirm
   @order = Order.new(order_params)
-  @carts = current_member.carts
   @member = current_member
+  @carts = current_member.carts
+  @sum  = 0
+  @carts.each do |cart|
+  @sum += (cart.product.price * 1.1).floor * cart.quantity
+  end
+  @order.total_price = @sum + @order.send_price
+  
    
      if params[:delivery_method] == "0"
         @order.delivery_postcode = @member.postcode  

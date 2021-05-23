@@ -1,6 +1,5 @@
 <h1>注⽂情報確認</h1>
 
-
 <table class="table table-hover table-inverse">
  <thead>
   <th>商品名</th>
@@ -16,17 +15,13 @@
 <th><%= (cart.product.price * 1.1).floor * cart.quantity %></th>
 </tr>
 　<% end %>
- <thead>
+ </thead>
    <tbody>
-    <th>送料</th>
-   <th>商品合計</th>
-   <th>請求金額</th>
-    
+    <th>送料 <%= @order.send_price %></th>
+    <th>商品合計 <%= @sum %></th>
+    <th>請求金額 <%= @order.total_price %></th>
      </tbody>
-  
-  
  </table>
-
 
 <h6>支払方法</h6>
 <p>
