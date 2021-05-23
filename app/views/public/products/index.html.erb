@@ -1,10 +1,14 @@
-<!--商品のインスタンス変数admin側と確認する？-->
-<h1>商品一覧<span>（全<%= @products.count %>件）</span></h1> 
+<h1>商品一覧<span>（全<%= @products.count %>件）</span></h1>
 
 <% @products.each do |product| %>
-  <%= product.image %>
+<div>
+  <%= link_to public_product_path(product) do %>
+    <%= attachment_image_tag product, :image, :fill, 300, 300 %>
+  <% end %>
   <%= product.name %>
-  <%= product.price %>
+  <span>¥</span><%= product.price %>
+</div>
 <% end %>
 
-<!--kaminariつける-->
+
+<%= paginate @products %>

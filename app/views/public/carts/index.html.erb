@@ -1,21 +1,57 @@
 <div class='container'>
-  <div class ='header-cart'>
-    <h1 class='text-center mb-50'>ショッピングカート</h1>
-  </div>
-  <ul class='list-group'>
-
-    <li class='list-group-product d-flex justify-content-between border p-3'>
+  <h1>ショッピングカート</h1>
 
 
-    </li>
-  </ul>
-  <li class="list-none">
-    <% @carts.each do |cart| %>
-    <%#= attachment_image_tag cart.product, :image %>
-    <%= cart.product.title %>
-    <%= (cart.product.price * 1.1).floor %>
-    <% end %>
+<table>
+
+  <tr>
+    <th>商品名</th>
+    <th>単価（税込）</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th></th>
+  </tr>
+
+  <% @carts.each do |cart| %>
+  <tr>
+    <td>
+      <%= attachment_image_tag cart.product, :image, :fill, 50, 50 %>
+      <%= cart.product.title %>
+    </td>
+    <td>
+      <%= (cart.product.price * 1.1).floor %>
+    </td>
+    <td>
+      <%= cart.quantity %>
+      <%#= form_with  url: public_carts_path, local: true, do |f| %>
+        <%#= f.select :quantity  %>
+        <%#= f.submit "数量の変更を確定" %>
+      <%# end %>
+    </td>
+    <td>
+      <!--小計-->
+    </td>
+    <td>
+      <%#= button_to "削除", public_cart_path(product_id: cart.product.id), method: :delete, data: { confirm: "商品を削除しますか？" } %>
+    </td>
+
+  </tr>
+   <% end %>
+
+</table>
 
 
-　</li>
+
+
+    <%#= form_with(url: "public/carts", method: :post,local: true) do |f| %>
+    <%#= f.hidden_field :product_id, value: cart.product.id %>
+    <%#= f.number_field :quantity ,value: cart.quantity%>
+    <%#= f.submit "情報入力に進む", class: 'btn btn-primary' %>
+    <%# end %>
+    <%#= button_to "削除", delete_item_path(product_id: cart_item.product.id), method: :delete, data: { confirm: "商品を削除しますか？" } %>
+
+
+
+
+
 </div>
