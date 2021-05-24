@@ -1,9 +1,12 @@
  <h1>注文履歴詳細</h1>
  
  <h2>注文情報</h2>
- <p>注文日：<%= @order.created_ad %></p>
- <p>配送先：<%= @order.delivery_address %></p>
- <p>支払先：<%= @order.payment_method %></p>
+ <p>注文日：<%= @order.created_at %></p>
+ <p>配送先：〒<%= @order.delivery_postcode %>
+            <p><%= @order.delivery_address %></p>
+            <p><%= @order.delivery_name %></p>
+ </p>
+ <p>支払方法：<%= @order.payment_method %></p>
  <p>ステータス：<% if @order.status = 0 %>入金待ち
    　            <% elsif @order.status = 1 %>入金確認
               　<% elsif @order.status = 2 %>製作中
@@ -13,7 +16,7 @@
   　           　<% end %></p>
  
  <h2>請求情報</h2>
- <p>商品合計：<%= (@order.order_product_purchase_price) * (@order.order_product.quantity) %></p>
+ <p>商品合計：<%= @sum %><%#= (@order.order_product_purchase_price) * (@order.order_product.quantity) %></p>
  <p>配送料：<%= @order.send_price %></p>
  <p>ご請求額：<%= @order.total_price %></p>
  
@@ -28,10 +31,10 @@
   <tr>
  <% @orders.each do |order| %>
  <tr>
- <th><%= order.product.name %></th>
- <th><%= order.order_product_purchase_price %></th>
- <th><%= order.order_product.quantity %></th>
- <th><%= (order.order_product_purchase_price) * (order.order_product.quantity) %></th>
+ <th><%#= order.product.name %></th>
+ <th><%#= order.order_product_purchase_price %></th>
+ <th><%#= order.order_product.quantity %></th>
+ <th><%#= (order.order_product_purchase_price) * (order.order_product.quantity) %></th>
  <% end %>
  </tr></tr>
   <thead>
