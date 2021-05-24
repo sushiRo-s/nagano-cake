@@ -16,7 +16,7 @@
   　           　<% end %></p>
  
  <h2>請求情報</h2>
- <p>商品合計：<%= @sum %><%#= (@order.order_product_purchase_price) * (@order.order_product.quantity) %></p>
+ <p>商品合計：<%= @sum %><%#= (@order.order_product.purchase_price) * (@order.order_product.quantity) %></p>
  <p>配送料：800</p>
  <p>ご請求額：<%= @order.total_price %></p>
  
@@ -29,13 +29,15 @@
   <th>小計</th>
   <th colspan="4"></th>
   <tr>
- <% @orders.each do |order| %>
+ 
+ <% @order.order_products.each do |order_product| %>
  <tr>
- <th><%#= order.product.name %></th>
- <th><%#= order.order_product_purchase_price %></th>
- <th><%#= order.order_product.quantity %></th>
- <th><%#= (order.order_product_purchase_price) * (order.order_product.quantity) %></th>
+ <th><%= order_product.product.name %></th>
+ <th><%= order_product.purchase_price %></th>
+ <th><%= order_product.quantity %></th>
+ <th><%= (order_product.purchase_price) * (order_product.quantity) %></th>
+ </tr>
  <% end %>
- </tr></tr>
+ 
   <thead>
  </table>
