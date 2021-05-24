@@ -8,25 +8,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-<<<<<<< HEAD
   @order = Order.new(order_params)
   @member = current_member
   @carts = current_member.carts
   @sum  = 0
   @carts.each do |cart|
-  @sum += (cart.product.price * 1.1).floor * cart.quantity
+   @sum += (cart.product.price * 1.1).floor * cart.quantity
   end
-  @order.total_price = @sum + 800800
-=======
-     @order = Order.new(order_params)
-     @member = current_member
-     @carts = current_member.carts
-     @sum  = 0
-     @carts.each do |cart|
-      @sum += (cart.product.price * 1.1).floor * cart.quantity
-     end
-     @order.total_price = @sum + @order.send_price
->>>>>>> origin/develop
+   @order.total_price = @sum + 800
   
    
      if params[:delivery_method] == "0"
