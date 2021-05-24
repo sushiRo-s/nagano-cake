@@ -8,6 +8,7 @@
   <th>小計</th>
   <th colspan="4"></th>
   <tr>
+   
   <% @carts.each do |cart| %>
 <th><%= cart.product.name %></th>
 <th><%= (cart.product.price * 1.1).floor %></th>
@@ -17,7 +18,7 @@
 　<% end %>
  </thead>
    <tbody>
-    <th>送料 <%= @order.send_price %></th>
+    <th>送料 800 </th>
     <th>商品合計 <%= @sum %></th>
     <th>請求金額 <%= @order.total_price %></th>
      </tbody>

@@ -8,14 +8,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-  @order = Order.new(order_params)
-  @member = current_member
-  @carts = current_member.carts
-  @sum  = 0
-  @carts.each do |cart|
-   @sum += (cart.product.price * 1.1).floor * cart.quantity
-  end
-   @order.total_price = @sum + 800
+     @order = Order.new(order_params)
+     @member = current_member
+     @carts = current_member.carts
+     @sum  = 0
+     @carts.each do |cart|
+      @sum += (cart.product.price * 1.1).floor * cart.quantity
+     end
+     @order.total_price = @sum + 800
   
    
      if params[:delivery_method] == "0"
@@ -41,28 +41,27 @@ class Public::OrdersController < ApplicationController
    @order.save
    
    @carts = current_member.carts
-    # @carts.each do |cart|
-    #   @product = Product.find(params[:id])
-    #   @order_product = Order_Products.new({
-    #    purchase_price: (@product.price * 1.1).floor,
-    #    quantity: cart.quantity,
-    #    order_id: (@product.price * 1.1).floor * cart.quantity,
-    #    product_id: @product.name
-    #   })
-    #  end
-    #  @order_product.save
+       @carts.each do |cart|
+        @orderproduct = OrderProduct.new({
+         purchase_price: (cart.product.price * 1.1).floor,
+         quantity: cart.quantity,
+         order_id: (cart.product.price * 1.1).floor * cart.quantity,
+         product_id: cart.product_id
+        })
+        @orderproduct.order_id = @order.id
+        @orderproduct.save
+       end
     @carts.destroy_all
    
     redirect_to public_complete_path
   end
    
-
   def complete
   end
 
   def index
    @orders = Order.page(params[:page]).reverse_order
-   # @order_product = Order_product.find(params[:id])
+   #@orderproduct = OrderProduct.where(order_id: order.id)
   end
 
   def show
@@ -78,7 +77,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :status, :delivery_name, :delivery_address, :delivery_postcode, :member_id, :member_address, :total_price, :quantity, :product_name)
+    params.require(:order).permit(:payment_method, :delivery_name, :delivery_address, :delivery_postcode, :total_price)
   end
   
 
