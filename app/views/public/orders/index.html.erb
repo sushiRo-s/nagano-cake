@@ -12,9 +12,11 @@
   <tr>
  <% @orders.each do |order| %>
  <tr>
- <th><%= order.created.ad %></th>
- <th><%= order.delivery_address %></th>
- <th><%= order_product.name %></th>
+ <th><%= order.created_at %></th>
+ <th>〒<%= order.delivery_postcode %>
+       <p><%= order.delivery_address %></p>
+       <p><%= order.delivery_name %></p></th>
+ <th><%#= @order_product.product_id %></th>
  <th><%= order.total_price %></th>
  <th><% if order.status = 0 %>入金待ち
    　<% elsif order.status = 1 %>入金確認
@@ -29,3 +31,4 @@
  </tr></tr>
   <thead>
  </table>
+ <%= paginate @orders %>

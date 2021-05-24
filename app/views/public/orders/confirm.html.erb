@@ -34,3 +34,14 @@
 <h6>お届け先</h6>
 <p>〒<%= @order.delivery_postcode %><%= @order.delivery_address %></p>
 <%= @order.delivery_name %>
+
+<%= form_with model:@order, url:"/public/orders", local:true do |f| %>
+<%= f.hidden_field :delivery_address, value: @order.delivery_address %>
+<%= f.hidden_field :delivery_postcode, value: @order.delivery_postcode %>
+<%= f.hidden_field :delivery_name, value: @order.delivery_name %>
+<%= f.hidden_field :payment_method, value: @order.payment_method %>
+<%= f.hidden_field :total_price, value: @order.total_price %>
+<%#= f.hidden_field :product_name, value: @order.product_name %>
+
+<%= f.submit "注文を確定する", class: "btn btn-success" %>
+<% end %>
