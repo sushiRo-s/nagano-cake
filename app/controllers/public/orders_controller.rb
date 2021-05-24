@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
   @carts.each do |cart|
   @sum += (cart.product.price * 1.1).floor * cart.quantity
   end
-  @order.total_price = @sum + @order.send_price
+  @order.total_price = @sum + 800800
   
    
      if params[:delivery_method] == "0"
