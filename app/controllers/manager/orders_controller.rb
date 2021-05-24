@@ -7,7 +7,14 @@ class Manager::OrdersController < ApplicationController
   
   def show
     @order = Order.find(params[:id])
+    @orders = Order.all
+    @member = Member.find(@order.member.id)
+    @sum = 0
+    @order.order_products.each do |order_product|
+     @sum += (order_product.purchase_price).floor * order_product.quantity
+    end
   end
+  
   def update
     order = Order.find(params[:id])
     order.update(order_params)
