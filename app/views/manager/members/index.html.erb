@@ -1,0 +1,24 @@
+<h2>会員一覧</h2>
+
+<table class="table table-hover table-inverse">
+ <thead>
+  <th>会員id </th>
+  <th>氏名 </th>
+  <th>メールアドレス</th>
+  <th>ステータス</th>
+  <th colspan="4"></th>
+  <tr>
+ <% @members.each do |member| %>
+ <tr>
+ <th><%= member.id %></th>
+ <th><%= link_to ( member.last_name + member.first_name), manager_member_path(member) %></th>
+ <th><%= member.email %></th>
+ <th><% if member.is_deleted == true %>退会
+   　<% elsif member.is_deleted == false %>有効
+  　　<% else %>
+  　　<% end %></th>
+ <% end %>
+ </tr></tr>
+  <thead>
+ </table>
+ <%= paginate @members %>
