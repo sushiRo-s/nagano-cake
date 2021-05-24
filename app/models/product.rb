@@ -5,4 +5,9 @@ class Product < ApplicationRecord
   belongs_to :genre
   attachment :image
   
+  validates :image, presence: true
+  validates :name, presence: true
+  validates :title, presence: true
+  validates :price, presence: true
+  
 end
