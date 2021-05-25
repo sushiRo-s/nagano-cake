@@ -16,8 +16,8 @@ class Public::OrdersController < ApplicationController
       @sum += (cart.product.price * 1.1).floor * cart.quantity
      end
      @order.total_price = @sum + 800
-  
-   
+
+
      if params[:delivery_method] == "0"
         @order.delivery_postcode = @member.postcode
         @order.delivery_address =  @member.address
@@ -55,12 +55,8 @@ class Public::OrdersController < ApplicationController
 
     redirect_to public_complete_path
   end
-<<<<<<< HEAD
 
 
-=======
-   
->>>>>>> origin/develop
   def complete
   end
 
