@@ -18,7 +18,7 @@ class Manager::OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     order.update(order_params)
-    redirect_to manager_orders_path
+    redirect_to manager_order_path(order)
   end
   
   private

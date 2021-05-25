@@ -12,9 +12,9 @@
   <%= @order.payment_method %>
   <br>
   <div>
-  <%= form_with model:@order, url: manager_orders_path, local:true do |f| %>
+  <%= form_with model:@order, url: manager_order_path, local:true do |f| %>
   <h6>注文ステータス</h6>
-  <%= f.collection_select :order_status, Order.all, :status, :status, include_blank: "--選択して下さい--" %>
+  <%= f.select :status, ["入金待ち","入金確認","製作中","発送準備中","発送済み"]%>
   <%= f.submit '更新', class: 'btn btn-success' %></br>
   <% end %>
   </div>
@@ -35,12 +35,12 @@
  <th><%= order_product.purchase_price %></th>
  <th><%= order_product.quantity %></th>
  <th><%= (order_product.purchase_price) * (order_product.quantity) %></th>
-   <% end %>
- <th><%= form_with model:@order, url: manager_orders_path, local:true do |f| %>
- <%= f.collection_select :order_product_id, Order.all, :id, :status, include_blank: "--選択して下さい--" %>
+ <th><%= form_with model:@order_product, url: manager_order_product_path, local:true do |f| %>
+ <%= f.select :status, ["製作不可","製作待ち","製作中","製作完了"]%>
      <%= f.submit '更新', class: 'btn btn-success' %></th>
      <% end %></th>
  </tr>
+ <% end %>
   <thead>
  </table>
 
