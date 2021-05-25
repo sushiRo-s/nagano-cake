@@ -15,7 +15,7 @@
      </label>
      
      <p><label><%= radio_button_tag :delivery_method, "1" %> 登録済住所から選択</p>
-     〒<%= f.collection_select(:delivery_id, @deliveries, :id, :address) %>
+     〒<%= f.collection_select(:delivery_id, @deliveries, :id, :full_deliveries) %>
      </label></p>
      
      <p><label><%= radio_button_tag :delivery_method, "2" %> 新しいお届け先 
@@ -27,5 +27,3 @@
       <br><%= f.submit '確認画面へ進む', class: 'btn btn-primary' %></br>
     
 <% end %>
-
-

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
     def after_sign_up_path_for(resource)
       if resource.is_a?(Member)
-      root_path(resource)
+      public_member_path(resource)
       end
     end
 
