@@ -18,7 +18,16 @@ class Manager::OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     order.update(order_params)
-    redirect_to manager_order_path(order)
+    
+    if  params[:order][:status] == "入金確認"
+         order_products = order.order_products 
+         order_products.each do |order_product|
+          order_product.update(status: "製作待ち")
+         end
+         redirect_to manager_order_path(order)
+    else
+       redirect_to manager_order_path(order)
+    end
   end
   
   private

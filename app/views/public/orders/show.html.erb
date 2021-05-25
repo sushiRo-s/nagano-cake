@@ -7,11 +7,11 @@
             <p><%= @order.delivery_name %></p>
  </p>
  <p>支払方法：<%= @order.payment_method %></p>
- <p>ステータス：<% if @order.status = 0 %>入金待ち
-   　            <% elsif @order.status = 1 %>入金確認
-              　<% elsif @order.status = 2 %>製作中
-   　            <% elsif @order.status = 3 %>発送準備中
-              　<% elsif @order.status = 4 %>発送済み
+ <p>ステータス：<% if @order.status == "入金待ち" %>入金待ち
+   　          　<% elsif @order.status == "入金確認" %>入金確認
+   　            <% elsif @order.status == "製作中" %>製作中
+   　            <% elsif @order.status == "発送準備中" %>発送準備中
+             　  <% elsif @order.status == "発送済み" %>発送済み
   　           　<% else %>
   　           　<% end %></p>
  

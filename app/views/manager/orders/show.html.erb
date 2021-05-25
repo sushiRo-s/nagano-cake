@@ -35,7 +35,7 @@
  <th><%= order_product.purchase_price %></th>
  <th><%= order_product.quantity %></th>
  <th><%= (order_product.purchase_price) * (order_product.quantity) %></th>
- <th><%= form_with model:@order_product, url: manager_order_product_path, local:true do |f| %>
+ <th><%= form_with model: order_product, url: manager_order_product_path(order_product), method: :patch, local:true do |f| %>
  <%= f.select :status, ["製作不可","製作待ち","製作中","製作完了"]%>
      <%= f.submit '更新', class: 'btn btn-success' %></th>
      <% end %></th>
