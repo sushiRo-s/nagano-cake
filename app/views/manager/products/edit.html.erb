@@ -1,23 +1,32 @@
-<h2>商品編集</h2>
-
-<div>
-  <%= form_with model:@product, url: manager_product_path(@product), local:true do |f| %>
-  <h6>商品画像</h6>
-  <%= f.attachment_field :image %>
-  <h6>商品名</h6>
-  <%= f.text_field :name %>
-  <h6>商品説明</h6>
-  <%= f.text_area :title %>
+<div class="container">
   
-  <h6>ジャンル</h6>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択して下さい--" %>
-  <h6>税抜き価格</h6>
-  <%= f.text_field :price %>
-  円
-  <h6>販売ステータス</h6>
-  <label><%= f.radio_button :is_active, true %> 販売中</label>
-  <label><%= f.radio_button :is_active, false %> 販売停止中 </label>
-  <br>
-  <%= f.submit '変更を保存', class: 'btn btn-success' %></br>
-  <% end %>
-  </div>
+   <%= render "layouts/error", obj: @product %>
+   </br>
+    <div class="row">
+     <div class="col-lg-2"></div>
+     <div class="col-lg-10">
+     <h2>商品編集</h2>
+     </br>
+     </div>
+    </div>
+    <div class="row">
+     <div class="col-lg-3"></div>
+     <div class="col-lg-9">
+         <%= form_with model:@product, url: manager_product_path(@product), local:true do |f| %>
+            <p>商品画像　　　　<%= f.attachment_field :image %></p>
+            <p>商品名　　　　　<%= f.text_field :name %></p>
+            <p>商品説明　　　　<%= f.text_area :title %></p>
+            <p>ジャンル　　　　<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択して下さい--" %></p>
+            <p>税抜き価格　　　<%= f.text_field :price %>  円</p>
+            <p>販売ステータス  　　<label><%= f.radio_button :is_active, true %> 販売中</label>　
+                                   <label><%= f.radio_button :is_active, false %> 販売停止中 </label></p></br>
+         <div class="row">
+           <div class="col-lg-3"></div>
+           <div class="col-lg-9">
+            <%= f.submit '変更を保存', class: 'btn btn-success' %></br>
+          <% end %>
+          </div>
+         </div>
+      </div>
+     </div>
+</div>

@@ -69,3 +69,4 @@ gem "refile-mini_magick"
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'pry-byebug'
+gem 'rails-i18n'

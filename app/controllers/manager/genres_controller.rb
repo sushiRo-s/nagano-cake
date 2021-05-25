@@ -16,9 +16,13 @@ class Manager::GenresController < ApplicationController
      end
 
      def create
-      genre = Genre.new(genre_params)
-      genre.save
-      redirect_to manager_genres_path
+      @genre = Genre.new(genre_params)
+      if @genre.save
+       redirect_to manager_genres_path
+      else
+       @genres= Genre.all
+       render :index
+      end
      end
 
      private

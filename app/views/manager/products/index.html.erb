@@ -1,31 +1,41 @@
-
-<h2>商品一覧</h2>
-
-
-<p><%= link_to '商品新規登録へ', new_manager_product_path ,class: 'fas fa-plus-circle'%></p>
-
- <table class="table table-hover table-inverse">
- <thead>
-  <th>商品id </th>
-  <th>商品名 </th>
-  <th>税抜き価格 </th>
-  <th>ジャンル名 </th>
-  <th>販売ステータス</th>
-  <th colspan="5"></th>
- </thead>
- 
- <% @products.each do |product| %>
- <tr>
- <th><%= product.id %></th>
-  <th><%= link_to product.name, manager_product_path(product) %></th>
-  <th><%= product.price %></th>
-  <th><%= product.genre.name %></th>
-  <th><% if product.is_active == true %> 販売中
-      <% elsif product.is_active == false %> 販売停止中
-      <% else %>
-  </th>
-   <% end %>
- <% end %>
- </tr>
- </table>
- <%= paginate @products %>
+<div class="container">
+    </br>
+    <div class="row">
+     <div class="col-lg-3">
+       <h2>商品一覧</h2>
+     </div>
+     <div class="col-lg-6"></div>
+     <div class="col-lg-3">
+       <p><%= link_to '商品新規登録へ', new_manager_product_path ,class: 'fas fa-plus-circle'%></p>
+     </div>
+    </div>
+      <table class="table table-hover table-inverse">
+         <thead>
+          <th>商品id </th>
+          <th>商品名 </th>
+          <th>税抜き価格 </th>
+          <th>ジャンル名 </th>
+          <th>販売ステータス</th>
+         </thead>
+         
+         <% @products.each do |product| %>
+         <tr>
+           <th><%= product.id %></th>
+            <th><%= link_to product.name, manager_product_path(product) %></th>
+            <th><%= product.price %></th>
+            <th><%= product.genre.name %></th>
+            <th><% if product.is_active == true %> 販売中
+                <% elsif product.is_active == false %> 販売停止中
+                <% else %>
+            </th>
+                <% end %>
+          <% end %>
+          </tr>
+      </table>
+       <div class="row">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-7">
+         <%= paginate @products %>
+        </div>
+       </div>
+</div>
