@@ -10,14 +10,14 @@
   <tr>
  <% @orders.each do |order| %>
  <tr>
- <th><%= link_to order.created_at, manager_order_path(order) %></th></th>
+ <th><%= link_to order.created_at, manager_order_path(order) %></th>
  <th><%= order.member.last_name %><%= order.member.first_name %></th>
- <th><%#= order.order_product.quantity %></th>
- <th><% if order.status = 0 %>入金待ち
-   　<% elsif order.status = 1 %>入金確認
-   　<% elsif order.status = 2 %>製作中
-   　<% elsif order.status = 3 %>発送準備中
-   　<% elsif order.status = 4 %>発送済み
+     <th> <%= order.order_products.sum(:quantity) %>　</th>
+ <th><% if order.status == "入金待ち" %>入金待ち
+   　<% elsif order.status == "入金確認" %>入金確認
+   　<% elsif order.status == "製作中" %>製作中
+   　<% elsif order.status == "発送準備中" %>発送準備中
+   　<% elsif order.status == "発送済み" %>発送済み
   　　<% else %>
   　　<% end %></th>
  <% end %>
