@@ -10,7 +10,7 @@
   <th>注文詳細</th>
   <th colspan="6"></th>
   <tr>
- <% @orders.each do |order| %>
+   <% @orders.each do |order| %>
  <tr>
  <th><%= order.created_at %></th>
  <th>〒<%= order.delivery_postcode %>
@@ -20,11 +20,11 @@
      <%= order_product.product.name %>
  　   <% end %></th>
  <th><%= order.total_price %></th>
- <th><% if order.status = 0 %>入金待ち
-   　<% elsif order.status = 1 %>入金確認
-   　<% elsif order.status = 2 %>製作中
-   　<% elsif order.status = 3 %>発送準備中
-   　<% elsif order.status = 4 %>発送済み
+ <th><% if order.status == "入金待ち" %>入金待ち
+   　<% elsif order.status == "入金確認" %>入金確認
+   　<% elsif order.status == "製作中" %>製作中
+   　<% elsif order.status == "発送準備中" %>発送準備中
+   　<% elsif order.status == "発送済み" %>発送済み
   　　<% else %>
   　　<% end %></th>
   <th><%= link_to "表示する", public_order_path(order.id), class: 'btn btn-primary' %></th>

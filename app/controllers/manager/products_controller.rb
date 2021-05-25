@@ -16,9 +16,13 @@ class Manager::ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
-    product.save
-    redirect_to  manager_product_path(product.id)
+    @newproduct = Product.new(product_params)
+    if @newproduct.save
+     redirect_to  manager_product_path(@newproduct.id)
+    else
+     @genres= Genre.all
+     render :new
+    end
   end
 
   def edit

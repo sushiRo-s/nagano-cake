@@ -68,11 +68,18 @@ class Public::OrdersController < ApplicationController
   def show
    @order = Order.find(params[:id])
    @orders = Order.all
-   @carts = current_member.carts
-   @sum  = 0
-   @carts.each do |cart|
-   @sum += (cart.product.price * 1.1).floor * cart.quantity
+   
+   # @carts = current_member.carts
+   # @sum  = 0
+   # @carts.each do |cart|
+   # @sum += (cart.product.price * 1.1).floor * cart.quantity
+   
+   @sum = 0
+   @order.order_products.each do |order_product|
+   @sum += (order_product.purchase_price).floor * order_product.quantity
+   
    end
+   
   end
 
   private
