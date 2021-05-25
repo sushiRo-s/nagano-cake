@@ -1,18 +1,20 @@
 <h2>注文履歴詳細</h2>
 
   <h6>購入者</h6>
-  <%= link_to ( @order.member.last_name + @order.member.first_name), manager_member_path(member.id) %>
+  <%= link_to (@order.member.last_name + @order.member.first_name), manager_member_path(@order.member.id) %>
   <h6>注文日</h6>
   <%= @order.created_at %>
    <h6>配送先</h6>
-  <%= @order.delivery_address %>
+   <p>〒<%= @order.delivery_postcode %></p>
+   <p><%= @order.delivery_address %></p>
+   <p><%= @order.delivery_name %></p>
    <h6>支払い方法</h6>
   <%= @order.payment_method %>
   <br>
   <div>
-  <%= form_with model:@order, url: manager_order_path(order), local:true do |f| %>
+  <%= form_with model:@order, url: manager_order_path, local:true do |f| %>
   <h6>注文ステータス</h6>
-  <%= f.collection_select :member_id, Member.all, :id, :status, include_blank: "--選択して下さい--" %>
+  <%= f.select :status, ["入金待ち","入金確認","製作中","発送準備中","発送済み"]%>
   <%= f.submit '更新', class: 'btn btn-success' %></br>
   <% end %>
   </div>
@@ -26,27 +28,28 @@
   <th>制作ステータス</th>
   <th></th>
   <th colspan="6"></th>
-  <tr>
- <% @order_products.each do |order_product| %>
- <tr>
- <!--<th><%= order.member.name %></th>-->
+   <tr>
+ <% @order.order_products.each do |order_product| %>
+
+  <th> <%= order_product.product.name %></th>
  <th><%= order_product.purchase_price %></th>
  <th><%= order_product.quantity %></th>
- <th><%= (order_product_purchase_price) * (order_product.quantity) %></th>
- 
- <!--<th><%= form_with model:@order, url: manager_order_path(order), local:true do |f| %>-->
- <!--<th><%= f.collection_select :order_product_id, Order_Product.all, :id, :status, include_blank: "--選択して下さい--" %>-->
-     <!--<%= f.submit '更新', class: 'btn btn-success' %></th>-->
-     <!--<% end %>-->
+ <th><%= (order_product.purchase_price) * (order_product.quantity) %></th>
+ <th><%= form_with model: order_product, url: manager_order_product_path(order_product), method: :patch, local:true do |f| %>
+ <%= f.select :status, ["製作不可","製作待ち","製作中","製作完了"]%>
+     <%= f.submit '更新', class: 'btn btn-success' %></th>
+     <% end %></th>
  </tr>
  <% end %>
   <thead>
  </table>
- 
+
  
   <h6>商品合計</h6>
-   <%= (@order.order_product_purchase_price) * (@order.order_product.quantity) %>
+   <%= @sum %>
   <h6>送料</h6>
-   <%= @order.send_price %>
+   800
   <h6>請求金額合計</h6>
    <%= @order.total_price %>
+   
+   
