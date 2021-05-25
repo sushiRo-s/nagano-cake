@@ -1,5 +1,5 @@
 <div class="container">
-  
+
     <%= render "layouts/error", obj: @newproduct %>
     </br>
     <div class="row">
@@ -18,7 +18,7 @@
             <p>商品説明　　　　<%= f.text_area :title %></p>
             <p>ジャンル　　　　<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択して下さい--" %></p>
             <p>税抜き価格　　　<%= f.text_field :price %> 円 </p>
-            <p>販売ステータス  　　<label><%= f.radio_button :is_active, true %> 販売中</label>　
+            <p>販売ステータス  　　<label><%= f.radio_button :is_active, true %> 販売中</label>
                                  　<label><%= f.radio_button :is_active, false %> 販売停止中 </label> </p></br>
          <div class="row">
            <div class="col-lg-3"></div>

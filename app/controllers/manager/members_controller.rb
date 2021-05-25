@@ -13,9 +13,12 @@ class Manager::MembersController < ApplicationController
   end
   
   def update
-    member = Member.find(params[:id])
-    member.update(member_params)
-    redirect_to manager_member_path(member.id)
+    @member = Member.find(params[:id])
+    if @member.update(member_params)
+      redirect_to manager_member_path(member.id)
+    else
+      render :edit
+    end
   end
   
   private
