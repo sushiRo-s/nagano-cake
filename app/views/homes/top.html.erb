@@ -7,22 +7,11 @@
     </p>
   </div>
 </div>
-<<<<<<< HEAD
-<div class="new-products">
-  <h2>新着商品</h2>
-  <div class="new-product-boxes d-flex">
-    <% @products.first(4).each do |product| %>
-    <div class="new-product-box">
-=======
-
-
-
 <h2>新着商品</h2>
 <div class="container">
 <div class="row">
   <% @products.first(4).each do |product| %>
   <div class="col-sm-3">
->>>>>>> ea66f73dde768aaa6c50edd34efd4f1cd24cc7b2
       <%= link_to public_product_path(product) do %>
       <%= attachment_image_tag product, :image, class: "cake" %>
     <% end %>
