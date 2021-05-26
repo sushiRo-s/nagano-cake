@@ -15,18 +15,18 @@
       <tbody>
         <% @members.each do |member| %>
         <tr>
-          <th><%= member.id %></th>
-          <th><%= link_to ( member.last_name + member.first_name), manager_member_path(member) %></th>
-          <th><%= member.email %></th>
-          <th>
-            <% if member.is_deleted == true %>退会
-            <% elsif member.is_deleted == false %>有効
+          <td><%= member.id %></td>
+          <td><%= link_to ( member.last_name + member.first_name), manager_member_path(member) %></td>
+          <td><%= member.email %></td>
+          <td>
+            <% if member.is_deleted == true %><font color="gray">退会</font>
+            <% elsif member.is_deleted == false %><font color="green">有効</font>
             <% else %>
             <% end %>
-          </th>
+          </td>
         </tr>
         <% end %>
-        </tr></tr>
+        </td></td>
       </tbody>
     </table>
 

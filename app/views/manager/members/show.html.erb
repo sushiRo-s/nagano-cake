@@ -41,8 +41,8 @@
           </tr>
           <tr>
             <td>会員ステータス</td>
-            <td><% if @member.is_deleted == true %>退会
-                <% elsif @member.is_deleted == false %>有効
+            <td><% if @member.is_deleted == true %><font color="gray">退会</font>
+                <% elsif @member.is_deleted == false %><font color="green">有効</font>
                 <% end %></p>
             </td>
           </tr>

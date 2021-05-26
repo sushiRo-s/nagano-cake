@@ -18,21 +18,46 @@
 @import 'font-awesome';
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Kosugi+Maru&display=swap');
 
-.navbar-brand{
+
+
+body {
+ background-color: #FFFFF0;
+}
+
+header {
+ width: 100%;
+ height: 70px;
+ background-color: #ff9999;
+}
+
+main {
+ width: 100%;
+ height: 1000px;
+}
+.navbar-brand {
  font-size: 2rem;
  height: auto;
  font-family: 'Dancing Script', cursive;
 }
 
-#top-visual {
+footer {
  width: 100%;
+ background-color: #ff9999;
+ color: #ffffff;
+}
+
+
+#top-visual {
+ width: 1000px;
  height: 400px;
+ margin: 0 auto;
  background-image: url(img_sweets11.jpg);
  background-size: cover;
  background-position: center;
 }
 
 .top-visual-container {
+  margin-top: 100px;
   width: auto;
   height: 400px;
   background-color: rgba( 255, 255, 255, 0.5);
@@ -40,24 +65,31 @@
 
 .top-visual-text{
  font-size: 1.25rem;
+ padding-top: 120px;
  font-family: 'Dancing Script', cursive;
  font-family: 'Kosugi Maru', sans-serif;
+ text-align: center;
+ color: #2F4F4F;
+
 }
 
-.new-boxes {
- width: 100%;
- display: flex;
+
+.new-products h2 {
+ margin-top: 100px;
 }
 
-.new-box {
- width: 60%;
+.new-product-boxes {
+  display: flex;
 }
 
-.new-box-image {
- width: 200px;
- height: 160px;
+.new-product-box {
+  width: 25%;
 }
 
+#about {
+ font-family: 'Dancing Script', cursive;
+ font-size: 64px;
+}
 
 .image {
  width: 80%;
@@ -74,6 +106,9 @@
   margin-left: auto;
   margin-right: auto;
  }
- 
- 
+
+.product_image {
+ width: 100px;
+ height: 100px;
+}
 
