@@ -52,7 +52,7 @@
           </tr>
           <tr>
             <td></td>
-            <td><%= link_to ' 編集する', edit_manager_member_path(@member.id) , class: 'btn btn-success' %>　　　　　　　<%= link_to ' 注文履歴一覧を見る', manager_orders_path , class: 'btn btn-primary'%></td>
+            <td><%= link_to ' 編集する', edit_manager_member_path(@member.id) , class: 'btn btn-success', data: {"turbolinks"=>false} %>　　　　　　　<%= link_to ' 注文履歴一覧を見る', manager_orders_path , class: 'btn btn-primary'%></td>
           </tr>
         </tbody>
       </table>
