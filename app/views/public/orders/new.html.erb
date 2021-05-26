@@ -1,6 +1,7 @@
 <h1>注文情報入力</h1>
-
+   
     <%= form_with model:@order, url: public_confirm_path, method: :post, local:true do |f| %>
+    <div class ="left">
     <div class="order-payment">
       <h3>支払い方法</h3>
       <label><%= f.radio_button :payment_method, "クレジットカード" %>クレジットカード</label>
@@ -23,7 +24,8 @@
      <br>住所<%= f.text_field :delivery_address %></br>
      <br>宛名<%= f.text_field :delivery_name %></br>
      </label></p>
-    
+    </div>
+      <div class ="center">
       <br><%= f.submit '確認画面へ進む', class: 'btn btn-primary' %></br>
-    
+      </div>
 <% end %>

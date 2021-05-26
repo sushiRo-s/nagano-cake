@@ -1,8 +1,8 @@
 <div class='container'>
   <h1>ショッピングカート</h1>
-
+  <div class ="right">
   <%= button_to "カートを空にする", public_destroy_all_path, method: :delete, data: { confirm: "商品を削除しますか？" }, class: 'btn btn-danger' %>
-
+  </div>
 <table class="table table-hover table-inverse">
  <thead>
     <th>商品名</th>
@@ -30,14 +30,16 @@
     <% end %>
   </table>
   
-  <p><%= link_to "買い物を続ける", root_path, class: 'btn btn-primary' %></p>
-  <table>
-  <th>合計金額</th>
-  <th><%= @sum %></th>
-  </table>
+  <div class ="left">
+  <%= link_to "買い物を続ける", root_path, class: 'btn btn-primary' %>
+  </div>
+  <div class ="right">
+  合計金額
+  <%= @sum %>
+  </div>
   
   <br></br>
-  <div class ="aa">
+  <div class ="center">
   <%= link_to "情報入力に進む", new_public_order_path, class: "btn btn-success" %>
   </div>
 </div>

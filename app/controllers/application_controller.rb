@@ -2,19 +2,14 @@ class ApplicationController < ActionController::Base
 
     before_action :configure_permitted_parameters, if: :devise_controller?
 
-    def after_sign_in_path_for(resource)
-      if resource.is_a?(Admin)
-      manager_orders_path(resource)
-      else resource.is_a?(Member)
-      root_path(resource)
-      end
-    end
+     def after_sign_in_path_for(resource)
+       if resource.is_a?(Admin)
+           manager_orders_path(resource)
+       else resource.is_a?(Member)
+            root_path(resource)
+       end
+     end
 
-    def after_sign_up_path_for(resource)
-      if resource.is_a?(Member)
-      public_member_path(resource)
-      end
-    end
 
   protected
 
