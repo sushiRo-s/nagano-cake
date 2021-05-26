@@ -14,8 +14,8 @@
            <p>商品説明　　　<%= @product.title %></p>
            <p>ジャンル名　　<%= @product.genre.name %></p>
            <p>税込み価格 (税抜き価格)　　<%= (@product.price*1.1).floor %> (<%= @product.price %>) 円</p>
-           <p>販売ステータス　　<% if @product.is_active == true %>販売中
-                              <% elsif @product.is_active == false %>販売停止中
+           <p>販売ステータス　　<% if @product.is_active == true %><font color="success"><strong>販売中</strong></font>
+                              <% elsif @product.is_active == false %><font color="gray"><strong>販売停止中</strong></font></p>
                               <% else %>
                               <% end %>
             </br></br>
