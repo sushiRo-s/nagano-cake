@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="/"><span>NaganoCake</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,19 +8,20 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if member_signed_in? %>
-          <li><%= link_to ' マイページ',public_member_path(current_member),class: 'fas fa-home nav-link text-light' %></li>
-          <li><%= link_to ' 商品一覧',public_products_path,class: 'fas fa-users nav-link text-light' %></li>
-          <li><%= link_to ' カート',public_carts_path ,class: 'fas fa-book-open nav-link text-light'%></li>
+          <li><div class="color_white"><%= "ようこそ、" + current_member.last_name + current_member.first_name + "さん!" %></div></li>
+          <li><%= link_to ' マイページ',public_member_path(current_member.id),class: 'fas fa-user nav-link text-light' %></li>
+          <li><%= link_to ' 商品一覧',public_products_path,class: 'fab fa-shopify nav-link text-light' %></li>
+          <li><%= link_to ' カート',public_carts_path ,class: 'fas fa-shopping-cart nav-link text-light'%></li>
           <li><%= link_to ' ログアウト', destroy_member_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
         <% elsif admin_signed_in? %>
-          <li><%= link_to ' 商品一覧',manager_products_path,class: 'fas fa-home nav-link text-light' %></li>
+          <li><%= link_to ' 商品一覧',manager_products_path,class: 'fab fa-shopify nav-link text-light' %></li>
           <li><%= link_to ' 会員一覧',manager_members_path,class: 'fas fa-users nav-link text-light' %></li>
-          <li><%= link_to ' 注文履歴一覧',manager_orders_path ,class: 'fas fa-book-open nav-link text-light'%></li>
-          <li><%= link_to ' ジャンル一覧',manager_genres_path ,class: 'fas fa-book-open nav-link text-light'%></li>
+          <li><%= link_to ' 注文履歴一覧',manager_orders_path ,class: 'fas fa-database nav-link text-light'%></li>
+          <li><%= link_to ' ジャンル一覧',manager_genres_path ,class: 'fas fa-genderless nav-link text-light'%></li>
           <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
         <% else %>
-          <li><%= link_to ' About',home_about_path,class: 'fas fa-home nav-link text-light' %></li>
-          <li><%= link_to ' 商品一覧',public_products_path,class: 'fas fa-link nav-link text-light' %></li>
+          <li><%= link_to ' About',home_about_path,class: 'fas fa-eject nav-link text-light' %></li>
+          <li><%= link_to ' 商品一覧',public_products_path,class: 'fab fa-shopify nav-link text-light' %></li>
           <li><%= link_to ' 新規登録', new_member_registration_path,class: 'fas fa-user-plus nav-link text-light' %></li>
           <li><%= link_to ' ログイン', new_member_session_path ,class: 'fas fa-sign-in-alt nav-link text-light'%></li>
         <% end %>
