@@ -1,7 +1,7 @@
 class Manager::MembersController < ApplicationController
   before_action:authenticate_admin!
   def index
-    @members = Member.page(params[:page]).reverse_order
+    @members = Member.page(params[:page])
   end
 
   def show

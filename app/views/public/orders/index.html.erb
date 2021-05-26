@@ -13,11 +13,11 @@
    <% @orders.each do |order| %>
  <tr>
  <th><%= order.created_at %></th>
- <th>〒<%= order.delivery_postcode %>
+ <th><p>〒<%= order.delivery_postcode %></p>
        <p><%= order.delivery_address %></p>
        <p><%= order.delivery_name %></p></th>
      <th><% order.order_products.each do |order_product| %>
-     <%= order_product.product.name %>
+     <p><%= order_product.product.name %></p>
  　   <% end %></th>
  <th><%= order.total_price %></th>
  <th><% if order.status == "入金待ち" %>入金待ち

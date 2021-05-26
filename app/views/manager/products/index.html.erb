@@ -24,8 +24,8 @@
             <th><%= link_to product.name, manager_product_path(product) %></th>
             <th><%= product.price %></th>
             <th><%= product.genre.name %></th>
-            <th><% if product.is_active == true %> 販売中
-                <% elsif product.is_active == false %> 販売停止中
+            <th><% if product.is_active == true %><font color="success"><strong>販売中</strong></font>
+                <% elsif product.is_active == false %><font color="gray"><strong>販売停止中</strong></font></p>
                 <% else %>
             </th>
                 <% end %>
