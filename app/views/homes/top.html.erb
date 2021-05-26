@@ -9,7 +9,7 @@
 </div>
 <div class="new-products">
   <h2>新着商品</h2>
-  <div class="new-product-boxes">
+  <div class="new-product-boxes d-flex">
     <% @products.first(4).each do |product| %>
     <div class="new-product-box">
       <%= link_to public_product_path(product) do %>
