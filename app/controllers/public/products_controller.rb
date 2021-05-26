@@ -3,8 +3,8 @@ class Public::ProductsController < ApplicationController
  before_action:authenticate_member!
 
   def index
-   @products = Product.page(params[:page]).reverse_order
-   
+   @products = Product.page(params[:page])
+
   end
 
   def show
