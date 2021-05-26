@@ -1,19 +1,30 @@
 <h1>配送先登録 / ⼀覧</h1>
-<%= form_with model:@delivery, url: "public_deliveries_path", local:true do |f| %>
+<%= form_with model:@delivery, url: "/public/deliveries", local:true do |f| %>
   <p>郵便番号（ハイフンなし）</p>
   <%= f.text_field :postcode %>
   <p>住所</p>
   <%= f.text_field :address %>
   <p>宛名</p>
   <%= f.text_field :name %>
-  <%= f.submit '新規登録' %>
+  <%= f.submit '新規登録', class: 'btn btn-success' %>
 <% end %>
 
-<table>
-  <tr>
+<table class="table table-hover table-inverse">
+  <thead>
     <th>郵便番号</th>
     <th>住所</th>
     <th>宛名</th>
     <th></th>
+    <th colspan="4"></th>
+  </thead>
+  <tr>
+  <% @deliverys.each do |delivery| %>
+    <th><%= delivery.postcode %></th>
+    <th><%= delivery.address %></th>
+    <th><%= delivery.name %></th>
+    <th><%= link_to '編集する', edit_public_delivery_path(delivery), class: 'btn btn-success' %> 
+        <%= link_to '削除する', public_delivery_path(delivery), method: :delete, class: 'btn btn-danger' %>
+    </th>
   </tr>
+  <% end %>
 </table>

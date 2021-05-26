@@ -1,0 +1,49 @@
+<h1>注⽂情報確認</h1>
+
+<table class="table table-hover table-inverse">
+ <thead>
+  <th>商品名</th>
+  <th>単価(税込)</th>
+  <th>数量</th>
+  <th>小計</th>
+  <th colspan="4"></th>
+  <tr>
+   
+  <% @carts.each do |cart| %>
+<th><%= cart.product.name %></th>
+<th><%= (cart.product.price * 1.1).floor %></th>
+<th><%= cart.quantity %></th>
+<th><%= (cart.product.price * 1.1).floor * cart.quantity %></th>
+</tr>
+　<% end %>
+ </thead>
+   <tbody>
+    <th>送料 800 </th>
+    <th>商品合計 <%= @sum %></th>
+    <th>請求金額 <%= @order.total_price %></th>
+     </tbody>
+ </table>
+
+<h3>支払方法</h3>
+<p>
+<% if @order.payment_method == "クレジットカード" %>クレジットカード
+<% elsif @order.payment_method == "銀行振り込み" %>銀行振り込み
+<% else %>間違い
+<% end %>
+</p>
+
+<h3>お届け先</h3>
+<p>〒<%= @order.delivery_postcode %><%= @order.delivery_address %></p>
+<%= @order.delivery_name %>
+<%= form_with model:@order, url:"/public/orders", local:true do |f| %>
+<%= f.hidden_field :delivery_address, value: @order.delivery_address %>
+<%= f.hidden_field :delivery_postcode, value: @order.delivery_postcode %>
+<%= f.hidden_field :delivery_name, value: @order.delivery_name %>
+<%= f.hidden_field :payment_method, value: @order.payment_method %>
+<%= f.hidden_field :total_price, value: @order.total_price %>
+<%= f.hidden_field :status, value: @order.status %>
+<br></br>
+<div class ="center">
+<%= f.submit "注文を確定する", class: "btn btn-success" %>
+</div>
+<% end %>

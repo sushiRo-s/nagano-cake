@@ -1,0 +1,13 @@
+<h2><%= @member.last_name %><%= @member.first_name %>さんの会員詳細</h2>
+
+ <p>会員id :<%= @member.id %></p>
+ <p>氏名 :<%= @member.last_name %> <%= @member.first_name %></p>
+ <p>郵便番号 :<%= @member.postcode %></p>
+ <p>住所 :<%= @member.address %></p>
+ <p>電話番号 :<%= @member.phone_number %></p>
+ <p>メールアドレス :<%= @member.email %></p>
+ <p>会員ステータス :<% if @member.is_deleted == true %>退会
+                  　 <% elsif @member.is_deleted == false %>有効
+                　   <% end %></p>
+ <br><%= link_to ' 編集する', edit_manager_member_path(@member.id) , class: 'btn btn-success'%>　<%= link_to ' 注文履歴一覧を見る', manager_orders_path , class: 'btn btn-primary'%></br>
+ 
