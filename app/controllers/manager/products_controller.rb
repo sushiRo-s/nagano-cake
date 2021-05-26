@@ -2,7 +2,7 @@ class Manager::ProductsController < ApplicationController
   before_action:authenticate_admin!
 
   def index
-    @products = Product.page(params[:page]).reverse_order
+    @products = Product.page(params[:page])
     @genres= Genre.all
   end
 
@@ -30,9 +30,12 @@ class Manager::ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find(params[:id])
-    product.update(product_params)
-    redirect_to manager_product_path(product.id)
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+     redirect_to manager_product_path(@product.id)
+    else
+     render :edit
+    end
   end
 
   private

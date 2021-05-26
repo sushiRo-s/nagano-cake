@@ -1,10 +1,10 @@
 <div class="container">
-  
-   <%= render "layouts/error", obj: @product %>
    </br>
     <div class="row">
      <div class="col-lg-2"></div>
      <div class="col-lg-10">
+      
+       <%= render "layouts/error", obj: @product %>
      <h2>商品編集</h2>
      </br>
      </div>
@@ -12,19 +12,21 @@
     <div class="row">
      <div class="col-lg-3"></div>
      <div class="col-lg-9">
-         <%= form_with model:@product, url: manager_product_path(@product), local:true do |f| %>
-            <p>商品画像　　　　<%= f.attachment_field :image %></p>
-            <p>商品名　　　　　<%= f.text_field :name %></p>
-            <p>商品説明　　　　<%= f.text_area :title %></p>
-            <p>ジャンル　　　　<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択して下さい--" %></p>
-            <p>税抜き価格　　　<%= f.text_field :price %>  円</p>
-            <p>販売ステータス  　　<label><%= f.radio_button :is_active, true %> 販売中</label>　
-                                   <label><%= f.radio_button :is_active, false %> 販売停止中 </label></p></br>
+       <%= form_with model:@product, url: manager_product_path(@product), local:true do |f| %>
+          
+         <div style = "display:flex"><p>商品画像　　　　<%= f.attachment_field :image %></p></div>
+         <div style = "display:flex"><p>商品名　　　　　<%= f.text_field :name %></p></div>
+         <div style = "display:flex"><p>商品説明　　　　<%= f.text_area :title %></p></div>
+         <div style = "display:flex"><p>ジャンル　　　　<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択して下さい--" %></p></div>
+         <div style = "display:flex"><p>税抜き価格　　　<%= f.text_field :price %>  円</p></div>
+         <div style = "display:flex"><p>販売ステータス  　　<label><%= f.radio_button :is_active, true %> 販売中</label>　
+                                                               <label><%= f.radio_button :is_active, false %> 販売停止中 </label></p></div></br>
+ 
          <div class="row">
            <div class="col-lg-3"></div>
            <div class="col-lg-9">
             <%= f.submit '変更を保存', class: 'btn btn-success' %></br>
-          <% end %>
+        <% end %>
           </div>
          </div>
       </div>

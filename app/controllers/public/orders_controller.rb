@@ -16,30 +16,30 @@ class Public::OrdersController < ApplicationController
       @sum += (cart.product.price * 1.1).floor * cart.quantity
      end
      @order.total_price = @sum + 800
-  
-   
+
+
      if params[:delivery_method] == "0"
-        @order.delivery_postcode = @member.postcode  
-        @order.delivery_address =  @member.address  
+        @order.delivery_postcode = @member.postcode
+        @order.delivery_address =  @member.address
         @order.delivery_name =    (@member.last_name + @member.first_name)
-        
-     elsif params[:delivery_method]  == "1"  
+
+     elsif params[:delivery_method]  == "1"
            @delivery = Delivery.find(params[:order][:delivery_id])
-           @order.delivery_postcode = @delivery.postcode  
-           @order.delivery_address =  @delivery.address 
+           @order.delivery_postcode = @delivery.postcode
+           @order.delivery_address =  @delivery.address
            @order.delivery_name =     @delivery.name
-     elsif params[:delivery_method]  == "2"  
+     elsif params[:delivery_method]  == "2"
      else
            redirect_to new_public_order_path
      end
 
-  end  
-  
+  end
+
   def create
    @order = Order.new(order_params)
    @order.member_id = current_member.id
    @order.save
-   
+
    @carts = current_member.carts
        @carts.each do |cart|
         @orderproduct = OrderProduct.new({
@@ -52,15 +52,17 @@ class Public::OrdersController < ApplicationController
         @orderproduct.save
        end
     @carts.destroy_all
-   
+
     redirect_to public_complete_path
   end
-   
+
+
   def complete
   end
 
   def index
-   @orders = Order.page(params[:page]).reverse_order
+   @orders = current_member.orders
+   # @orders = Order.page(params[:page]).reverse_order
    #@orderproduct = OrderProduct.where(order_id: order.id)
   end
 
@@ -80,12 +82,12 @@ class Public::OrdersController < ApplicationController
    end
    
   end
-  
+
   private
 
   def order_params
     params.require(:order).permit(:payment_method, :delivery_name, :delivery_address, :delivery_postcode, :total_price)
   end
-  
+
 
 end
