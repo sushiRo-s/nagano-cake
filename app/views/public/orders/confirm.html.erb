@@ -10,12 +10,12 @@
   <tr>
 
   <% @carts.each do |cart| %>
-<th>
-  <th><%= attachment_image_tag cart.product, :image, class: 'cake2' %> <%= cart.product.name %></th>
-<th><%= (cart.product.price * 1.1).floor %></th>
-<th><%= cart.quantity %></th>
-<th><%= (cart.product.price * 1.1).floor * cart.quantity %></th>
-</tr>
+  <tr>
+   <th><%= attachment_image_tag cart.product, :image, class: 'cake2' %> <%= cart.product.name %></th>
+   <th><%= (cart.product.price * 1.1).floor %></th>
+   <th><%= cart.quantity %></th>
+   <th><%= (cart.product.price * 1.1).floor * cart.quantity %></th>
+  </tr>
 　<% end %>
  </thead>
    <tbody>
