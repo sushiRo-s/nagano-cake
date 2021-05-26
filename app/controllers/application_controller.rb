@@ -9,14 +9,13 @@ class ApplicationController < ActionController::Base
             root_path(resource)
        end
      end
-
-
-    def after_sign_out_path_for(resource)
-      if resource.is_a?(Admin)
-       new_admin_session_path
-      else resource.is_a?(Member)
-       root_path(resource)
-      end
+    
+    def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :admin
+      new_admin_session_path
+    elsif resource_or_scope == :member
+        root_path(resource)
+    end
     end
 
 
